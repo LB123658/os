@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,8 +129,10 @@ float: right;
 <!-- main app -->
 <div id="app">
   <div id="top">
-    <button class="tabs">Avocado OS</button>
-    <button class="tabs">Home</button>
+    <button class="tabs" onclick="notify('Avocado OS<br>Version 1.0')">Avocado</button>
+    <button class="tabs" onclick="notify(appDescription)" id="appName">Home</button>
+    <button class="tabs" onclick="notify(appInfo)">About</button>
+    <button class="tabs" onclick="notify(appCode)">Info</button>
     <button class="tabs" id="time" onclick="notify('Clock is on')">Clock off</button>
   </div>
 </div>
@@ -143,9 +146,15 @@ var time = d.toLocaleTimeString();
 document.getElementById("time").innerHTML = time;
 }
 
+//test section
+var appDescription = "<b>Home</b><br>The homepage for Avocado OS";
+var appInfo = "Home<br>Version 1.0<br>©2021 Avocado";
+var appCode = "App running: Home<br>Written in: HTML<br>Developer: Bob McBob";
+//end of test section
+
+
 function loadMain() {
 document.getElementById("load").style.visibility = "hidden";
-document.getElementById("alertDiv").style.visibility = "hidden";
 document.getElementById("app").style.visibility = "visible";
 }
 function notify(phrase) {
