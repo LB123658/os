@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -219,6 +218,12 @@ appName.innerHTML = "Home";
 about.addEventListener("click", function() {
   notify(appInfo);
   });
+appName.addEventListener("click", function() {
+  notify(appDescription);
+  });
+info.addEventListener("click", function() {
+  notify(appCode);
+  });
 }
 function openStore() {
 var appDescription = "<b>App Store</b><br>The official app store for Avocado OS";
@@ -228,6 +233,12 @@ appName.innerHTML = "App Store";
 about.addEventListener("click", function() {
   notify(appInfo);
   });
+appName.addEventListener("click", function() {
+  notify(appDescription);
+  });
+info.addEventListener("click", function() {
+  notify(appCode);
+  });
 }
 function openBrowser() {
 var appDescription = "<b>Browser</b><br>The browser for Avocado OS";
@@ -236,6 +247,12 @@ var appCode = "App running: Avocado Browser<br>Written in: HTML";
 appName.innerHTML = "Browser";
 about.addEventListener("click", function() {
   notify(appInfo);
+  });
+appName.addEventListener("click", function() {
+  notify(appDescription);
+  });
+info.addEventListener("click", function() {
+  notify(appCode);
   });
 }
 
