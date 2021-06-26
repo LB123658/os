@@ -110,6 +110,31 @@ background: #383838;
 #time {
 float: right;
 }
+#dropdown {
+position: absolute;
+top: 25px;
+left: 0px;
+width: 170px;
+background: transparent;
+visibility: hidden;
+z-index: 10;
+}
+.item {
+width: 170px;
+height: 25px;
+font-family: monospace;
+color: black;
+border: none;
+background: grey;
+font-size: 16px;
+border: none;
+text-align: left
+}
+.item:hover {
+opacity: 0.7;
+color: white;
+background: #383838;
+}
 </style>
 </head>
 <body onload="setTimeout(loadMain, 4000)">
@@ -128,11 +153,22 @@ float: right;
 <!-- main app -->
 <div id="app">
   <div id="top">
-    <button class="tabs" onclick="notify('Avocado OS<br>Version 1.0')">Avocado</button>
+    <button class="tabs" onmouseover="show(dropdown)" onmouseout="hide(dropdown)">Avocado OS</button>
     <button class="tabs" onclick="notify(appDescription)" id="appName">Home</button>
     <button class="tabs" onclick="notify(appInfo)">About</button>
     <button class="tabs" onclick="notify(appCode)">Info</button>
-    <button class="tabs" id="time" onclick="notify('Clock is on')">Clock off</button>
+    <button class="tabs" id="time" onclick="notify('Clock is on time')">Clock off</button>
+  </div>
+  <!-- dropdown div -->
+  <div id="dropdown" onmouseover="show(dropdown)" onmouseout="hide(dropdown)">
+    <button class="item" onclick="notify(osLogo)">About Avocado</button>
+    <button class="item">Fullscreen mode</button>
+    <button class="item">Settings</button>
+    <button class="item">Create app</button>
+  </div>
+  <!-- app dock -->
+  <div id="dock">
+    
   </div>
 </div>
 
@@ -146,6 +182,7 @@ document.getElementById("time").innerHTML = time;
 }
 
 //test section
+var osLogo = "Avocado OS<br><img src='https://lb123658.github.io/os/img/logo.svg' style='width:280px;'><br>Version 1.0";
 var appDescription = "<b>Home</b><br>The homepage for Avocado OS";
 var appInfo = "Home<br>Version 1.0<br>©2021 Avocado";
 var appCode = "App running: Home<br>Written in: HTML<br>Developer: Bob McBob";
@@ -164,6 +201,13 @@ function closeNotify() {
 document.getElementById("alertDiv").style.visibility = "hidden";
 }
 
+var dropdown = document.getElementById("dropdown");
+function show(element) {
+element.style.visibility = "visible";
+}
+function hide(element) {
+element.style.visibility = "hidden";
+}
 </script>
 </body>
 </html>
