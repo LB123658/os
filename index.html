@@ -6,6 +6,7 @@
 body {
 background: #282828;
 overflow: hidden;
+cursor: default;
 }
 #load {
 position: absolute;
@@ -17,17 +18,144 @@ background: white;
 }
 #logo {
 position: absolute;
-top: 35%;
+top: 30%;
 left: 5%;
 width: 90%;
 user-select: none;
 }
+#percent {
+position: absolute;
+bottom: 0px;
+height: 30px;
+background: #db4437;
+border-radius: 1px;
+border: none;
+width: 100%;
+left: 0px;
+animation-name: loader;
+animation-duration: 4s;
+}
+@keyframes loader {
+  0% {width: 0%;}
+  100% {width: 100%;}
+}
+#alertDiv {
+position: absolute;
+top: 25%;
+left: 50%;
+width: 300px;
+margin-left: -150px;
+background: white;
+border: 2px solid #db4437;
+border-radius: 1px;
+font-family: monospace;
+font-size: 18px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+visibility: hidden;
+z-index: 10;
+}
+#alertText {
+user-select: none;
+-webkit-user-select: none;
+margin-left: 15px;
+margin-right: 15px;
+line-height: 1.5;
+}
+#alertConfirm {
+height: 30px;
+background: #db4437;
+border: none;
+border-radius: 1px;
+color: white;
+font-family: monospace;
+float: right;
+margin-right: 15px;
+margin-bottom: 15px;
+font-size: 18px;
+}
+#alertConfirm:hover {
+opacity: 0.7;
+}
+#app {
+visibility: hidden;
+position: absolute;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 100%;
+}
+#top {
+position: absolute;
+top: 0px;
+left: 0px;
+height: 25px;
+width: 100%;
+background: grey;
+overflow: hidden;
+}
+.tabs {
+height: 25px;
+font-family: monospace;
+color: black;
+border: none;
+background: transparent;
+font-size: 16px;
+border: none;
+}
+.tabs:hover {
+opacity: 0.7;
+color: white;
+background: #383838;
+}
+#time {
+float: right;
+}
 </style>
 </head>
-<body>
+<body onload="setTimeout(loadMain, 4000)">
+<!-- loading screen -->
 <div id="load">
 <img id="logo" src="https://lb123658.github.io/os/img/logo.svg">
+<button id="percent" onclick="notify('Avocado OS is loading right now.')"></button>
 </div>
 
+<!-- alert box -->
+<div id="alertDiv">
+<p id="alertText">Avocado OS is working great. This message came up by accident.</p>
+<button id="alertConfirm" onclick="closeNotify()">Close</button>
+</div>
+
+<!-- main app -->
+<div id="app">
+  <div id="top">
+    <button class="tabs">Avocado OS</button>
+    <button class="tabs">Home</button>
+    <button class="tabs" id="time" onclick="notify('Clock is on')">Clock off</button>
+  </div>
+</div>
+
+<script>
+//get date for clock
+var myVar = setInterval(clock, 200);
+function clock() {
+var d = new Date();
+var time = d.toLocaleTimeString();
+document.getElementById("time").innerHTML = time;
+}
+
+function loadMain() {
+document.getElementById("load").style.visibility = "hidden";
+document.getElementById("alertDiv").style.visibility = "hidden";
+document.getElementById("app").style.visibility = "visible";
+}
+function notify(phrase) {
+document.getElementById("alertText").innerHTML = phrase;
+document.getElementById("alertDiv").style.visibility = "visible";
+}
+function closeNotify() {
+document.getElementById("alertDiv").style.visibility = "hidden";
+}
+
+</script>
 </body>
 </html>
