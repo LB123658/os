@@ -88,7 +88,7 @@ function hide() {
 contents.style.display = "none";
 }
 if (localStorage.getItem("os-background-image").length > 0) {
-  document.getElementById("img").style.display = "auto";
+  document.getElementById("img").style.display = "block";
   document.getElementById("img").src = localStorage.getItem("os-background-image");
 } else {
   document.getElementById("img").remove();
