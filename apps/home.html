@@ -54,6 +54,15 @@ font-size: 14px;
     visibility: hidden;
   }
 }
+#img {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  display: none;
+}
 </style>
 </head>
 <body>
@@ -67,7 +76,7 @@ font-size: 14px;
 <img src="https://lb123658.github.io/os/img/store.svg" class="item" title="App Store">
 <img src="https://lb123658.github.io/os/img/search.svg" class="item" title="Avocado Browser">
 </div>
-
+<img id="img">
 <script>
 var folder = document.getElementById("folder");
 var contents = document.getElementById("contents");
@@ -77,6 +86,12 @@ contents.style.display = "block";
 }
 function hide() {
 contents.style.display = "none";
+}
+if (localStorage.getItem("os-background-image").length > 0) {
+  document.getElementById("img").style.display = "auto";
+  document.getElementById("img").src = localStorage.getItem("os-background-image");
+} else {
+  document.getElementById("img").remove();
 }
 </script>
 </body>
