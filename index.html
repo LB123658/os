@@ -52,7 +52,7 @@ font-family: monospace;
 font-size: 18px;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 visibility: hidden;
-z-index: 10;
+z-index: 1;
 }
 #alertText {
 user-select: none;
@@ -92,6 +92,7 @@ height: 25px;
 width: 100%;
 background: grey;
 overflow: hidden;
+z-index: 10;
 }
 .tabs {
 height: 25px;
@@ -154,6 +155,14 @@ margin: 5px 0px 0px 5px;
 .icon:hover {
 opacity: 0.8;
 }
+#embed {
+position: absolute;
+top: 0px;
+left: 0px;
+height: 100%;
+width: 100%;
+overflow: auto;
+}
 </style>
 </head>
 <body onload="setTimeout(loadMain, 4000); openHome()">
@@ -192,6 +201,8 @@ opacity: 0.8;
     <img class="icon" src="https://lb123658.github.io/os/img/store.svg" title="App Store" onclick="openStore()">
     <img class="icon" src="https://lb123658.github.io/os/img/search.svg" title="Avocado Browser" onclick="openBrowser()">
   </div>
+  <!-- embed window -->
+  <embed id="embed" src="https://lb123658.github.io/os/apps/home"></embed>
 </div>
 
 <script>
@@ -208,6 +219,7 @@ var osLogo = "Avocado OS<br><img src='https://lb123658.github.io/os/img/logo.svg
 var appName = document.getElementById("appName");
 var about = document.getElementById("about");
 var info = document.getElementById("info");
+var embed = document.getElementById("embed");
 
 //app opening functions
 function openHome() {
@@ -224,6 +236,7 @@ appName.addEventListener("click", function() {
 info.addEventListener("click", function() {
   notify(appCode);
   });
+embed.src = "https://lb123658.github.io/os/apps/home";
 }
 function openStore() {
 var appDescription = "<b>App Store</b><br>The official app store for Avocado OS";
@@ -239,6 +252,7 @@ appName.addEventListener("click", function() {
 info.addEventListener("click", function() {
   notify(appCode);
   });
+embed.src = "https://lb123658.github.io/os/apps/store";
 }
 function openBrowser() {
 var appDescription = "<b>Browser</b><br>The browser for Avocado OS";
@@ -254,6 +268,7 @@ appName.addEventListener("click", function() {
 info.addEventListener("click", function() {
   notify(appCode);
   });
+embed.src = "https://lb123658.github.io/os/apps/browser";
 }
 
 function loadMain() {
