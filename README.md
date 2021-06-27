@@ -1,4 +1,3 @@
-<img src="img/logo.svg">
-<br>\
+![Image](img/logo.svg "Avocado OS")
 # Avocado
 ## A new OS that's online
