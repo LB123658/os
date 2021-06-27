@@ -1,4 +1,4 @@
 <img src="img/logo.svg">
-<br>
+<br>\
 # Avocado
 ## A new OS that's online
