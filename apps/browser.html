@@ -1,2 +1,46 @@
-<img src="https://lb123658.github.io/os/img/logo.svg"><br>
-The Avocado Browser is unavailable.
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input {
+width: 99%;
+height: 30px;
+font-size: 18px;
+font-family: monospace;
+border: 2px solid #DB4437;
+border-radius: 1px;
+color: black;
+}
+input:hover {
+background: #e8e6e6;
+}
+:focus {
+outline-width: 0px;
+}
+body {
+background: white;
+}
+</style>
+</head>
+<body>
+<br><br><br>
+<form id="form" action="#">
+<input type="text" onkeyup="setUrl()" placeholder="Enter URL" id="url" autocomplete="off">
+</form>
+<img src="https://lb123658.github.io/os/img/logo.svg" id="img">
+
+<script>
+document.getElementById("url").focus();
+function setUrl() {
+document.getElementById("form").action = document.getElementById("url").value;
+  if (document.getElementById("url").value.split("//")[0] == "https:") {
+    document.getElementById("url").style.color = "#499c38";
+  } else if (document.getElementById("url").value.split("//")[0] == "http:") {
+    document.getElementById("url").style.color = "red";
+    alert("That web address was not secure and could not be opened");
+  }
+}
+</script>
+
+</body>
+</html>
